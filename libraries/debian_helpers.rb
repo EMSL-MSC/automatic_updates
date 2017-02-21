@@ -9,6 +9,7 @@ module AutomaticUpdates
           action :upgrade
         end
         package 'unattended-upgrades' do
+          response_file 'unattended-upgrades.seed.erb'
           action :upgrade
         end
         unattended_upgrades_file = '/etc/apt/apt.conf.d/50unattended-upgrades'
