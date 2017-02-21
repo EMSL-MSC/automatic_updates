@@ -38,7 +38,7 @@ suites:
   - name: default
     run_list: recipe[automatic_updates]
 
-  - name: default-rackspace
+  - name: rackspace
     run_list: recipe[automatic_updates]
     attributes:
       openssh:
