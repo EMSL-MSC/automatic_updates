@@ -11,15 +11,15 @@ module AutomaticUpdates
         package 'unattended-upgrades' do
           action :upgrade
         end
-        unattended_upgrade_file = '/etc/apt/apt.conf.d/50unattended-upgrades'
+        unattended_upgrades_file = '/etc/apt/apt.conf.d/50unattended-upgrades'
         execute 'rackspace_allowed_origins' do
-          command "perl -pi -e 's/(Allowed-Origins\s*{)/$1\n\t\"serveragent main\";\n\t\"cloudmonitoring main\";/;' #{unattended_upgrade_file}"
+          command "perl -pi -e 's/(Allowed-Origins\s*{)/$1\n\t\"serveragent main\";\n\t\"cloudmonitoring main\";/;' #{unattended_upgrades_file}"
           only_if { rackspace? }
           action :run
         end
         # New format(Currently only Deb 7)
         execute 'rackspace_unattended_upgrade' do
-          command "perl -pi -e 's/(Unattended-Upgrade::Origins-Pattern\s*{)/$1\n\t\"o=serveragent,a=main\";\n\t\"o=cloudmonitoring,a=main\";/;' #{unattended_upgrade_file}"
+          command "perl -pi -e 's/(Unattended-Upgrade::Origins-Pattern\s*{)/$1\n\t\"o=serveragent,a=main\";\n\t\"o=cloudmonitoring,a=main\";/;' #{unattended_upgrades_file}"
           only_if { rackspace? }
           action :run
         end
