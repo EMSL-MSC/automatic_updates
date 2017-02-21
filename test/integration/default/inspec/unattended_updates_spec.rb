@@ -9,7 +9,7 @@ if os[:family] == 'debian'
     end
   end
 
-  describe command('debconf-get-selections | grep true') do
+  describe command('debconf-get-selections') do
     its(:stdout) { should match(%r{unattended-upgrades\sunattended-upgrades/enable_auto_updates\sboolean\strue}) }
   end
 end
