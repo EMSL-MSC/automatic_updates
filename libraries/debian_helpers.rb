@@ -6,11 +6,10 @@ module AutomaticUpdates
     module Debian
       def enable_auto_updates_debian
         package 'debconf-utils' do
-          action :install
+          action :upgrade
         end
         package 'unattended-upgrades' do
-          response_file lazy { 'unattended-upgrades.seed.erb' }
-          action :install
+          action :upgrade
         end
         unattended_upgrade_file = '/etc/apt/apt.conf.d/50unattended-upgrades'
         execute 'rackspace_allowed_origins' do
