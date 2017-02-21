@@ -1,6 +1,6 @@
 if os[:family] == 'redhat'
-  %w(yum-cron yum).each do |rhel_pkg|
-    describe package(rhel_pkg) do
+  %w(yum-cron yum).each do |pkg|
+    describe package(pkg) do
       it { should be_installed }
     end
   end

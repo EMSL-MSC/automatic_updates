@@ -1,11 +1,6 @@
-puts os[:family]
-puts os[:arch]
-puts os[:release].to_f
-
 if os[:family] == 'debian'
   describe file('/etc/apt/apt.conf.d/50unattended-upgrades') do
     its(:content) { should match(/Unattended-Upgrade/) }
-    # its(:content) { should match(/cloudmonitoring main/) }
   end
 
   %w(unattended-upgrades debconf).each do |pkg|
