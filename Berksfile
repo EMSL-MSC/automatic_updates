@@ -1,4 +1,4 @@
-source 'https://supermarket.chef.io'
+source 'https://supermarket.getchef.com'
 
 group :integration do
   cookbook 'disable_ipv6', path: 'test/fixtures/cookbooks/disable_ipv6'
